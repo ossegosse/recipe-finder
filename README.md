@@ -1,9 +1,9 @@
 # Slutprojekt Apputveckling - Ossian Igelberg
 
-## En receptapp där användaren ska kunna söka på recept, bläddra bland kategorier och få upp en detaljerad sida av en viss rätt
+### En receptapp där användaren ska kunna söka på recept, bläddra bland kategorier och få upp en detaljerad sida av en viss rätt
 
-## Techstack
+### Techstack
 - React Native
 - Expo (routes etc)
 
-## API - themealdb.com
+### API - themealdb.com
