@@ -1,36 +1,33 @@
 import React from 'react';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 import { Link, Tabs } from 'expo-router';
-import { Pressable } from 'react-native';
-
-// You can explore the built-in icon families and icons on the web at https://icons.expo.fyi/
-function TabBarIcon(props: {
-  name: React.ComponentProps<typeof FontAwesome>['name'];
-  color: string;
-}) {
-  return <FontAwesome size={28} style={{ marginBottom: -3 }} {...props} />;
-}
+import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { Ionicons } from '@expo/vector-icons';
+import Colors from '@/constants/Colors';
 
 export default function TabLayout() {
 
   return (
     <Tabs
       screenOptions={{
-        
+        tabBarActiveTintColor: Colors.primary,
+        tabBarLabelStyle: {
+          fontFamily: 'mon-sb'
+        }
       }}>
       <Tabs.Screen
         name="index"
         options={{
-          title: 'Tab One',
-          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
+          title: 'Recipes',
+         tabBarIcon: ({ color, size }) => <MaterialCommunityIcons name='food-variant' color={color} size={size} />  
           
         }}
       />
       <Tabs.Screen
-        name="two"
+        name="favorites"
         options={{
-          title: 'Tab Two',
-          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
+          title: 'Favorites',
+          tabBarIcon: ({ color, size }) => <Ionicons name='bookmark-outline' color={color} size={size} /> 
         }}
       />
     </Tabs>
