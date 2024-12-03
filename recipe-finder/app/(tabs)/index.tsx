@@ -6,6 +6,7 @@ import Recipes from '@/components/Recipes'
 
 const index = () => {
   const [category, setCategory] = useState('Beef');
+
   const onDataChanged = (category: string) => {
     setCategory(category);
   }
@@ -13,10 +14,13 @@ const index = () => {
     <View style={styles.container}>
       <Stack.Screen
       options={{
-        header: () => <ExploreHeader onCategoryChanged={onDataChanged} />,
+        header: () => 
+        <ExploreHeader 
+        onCategoryChanged={onDataChanged}
+        />,
       }} 
       />
-      <Recipes recipes={[]} category={category}/>
+      <Recipes category={category}/>
     </View>
   )
 }
