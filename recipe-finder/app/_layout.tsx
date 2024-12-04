@@ -49,6 +49,7 @@ function RootLayoutNav() {
   return (
       <Stack>
         <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+        <Stack.Screen name="details/[id]" options={{ headerTitle: 'Instructions', headerTintColor: '#000', headerBackTitle: 'Back', }} />
       </Stack>
   );
 }

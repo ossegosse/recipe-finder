@@ -1,11 +1,14 @@
 import { useState, useEffect } from 'react';
 
+export const BASE_URLS = {
+  CATEGORY: "https://www.themealdb.com/api/json/v1/1/filter.php?c=",
+  DETAIL: "https://www.themealdb.com/api/json/v1/1/",
+};
 
-function useGet<T>(endpoint: string) {
-    const baseUrl = "https://www.themealdb.com/api/json/v1/1/filter.php?c="; 
-    const [data, setData] = useState<null | T>(null);
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState<null | string>(null);
+function useGet<T>(endpoint: string, baseUrl: string) {
+  const [data, setData] = useState<null | T>(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<null | string>(null);
 
   useEffect(() => {
     const fetchData = async () => {

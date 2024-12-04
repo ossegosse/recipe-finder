@@ -1,6 +1,8 @@
 import React from 'react';
 import { View, Text, ActivityIndicator, Image, TouchableOpacity, StyleSheet, ScrollView } from 'react-native';
 import useGet from '@/hooks/useGet';
+import { Link } from 'expo-router';
+import { BASE_URLS } from '@/hooks/useGet';
 
 type Meal = {
   strMeal: string;
@@ -16,8 +18,13 @@ interface Props {
   category: string;
 }
 
+
+
 const Recipes = ({ category }: Props) => {
-  const { data, loading, error } = useGet<MealsResponse>(category);
+  const { data, loading, error } = useGet<MealsResponse>(
+    category, 
+    BASE_URLS.CATEGORY
+  );
 
   if (loading) {
     return (
@@ -48,7 +55,8 @@ const Recipes = ({ category }: Props) => {
     <ScrollView >
       {data.meals.map((meal) => (
         <View style={styles.listing} key={meal.idMeal}>
-          <TouchableOpacity>
+          <Link href={`/details/${meal.idMeal}`} asChild>
+          <TouchableOpacity >  
             <Image
               style={styles.image}
               source={{ uri: meal.strMealThumb }}
@@ -56,6 +64,7 @@ const Recipes = ({ category }: Props) => {
             />
             <Text style={styles.info}>{meal.strMeal}</Text>
           </TouchableOpacity>
+          </Link>
         </View>
       ))}
     </ScrollView>
