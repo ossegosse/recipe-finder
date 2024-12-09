@@ -3,6 +3,7 @@ import { View, Text, ActivityIndicator, Image, TouchableOpacity, StyleSheet, Scr
 import useGet from '@/hooks/useGet';
 import { Link } from 'expo-router';
 import { BASE_URLS } from '@/hooks/useGet';
+import Colors from '@/constants/Colors';
 
 type Meal = {
   strMeal: string;
@@ -65,6 +66,7 @@ const Recipes = ({ category }: Props) => {
             <Text style={styles.info}>{meal.strMeal}</Text>
           </TouchableOpacity>
           </Link>
+          <View style={styles.divider} />
         </View>
       ))}
     </ScrollView>
@@ -85,7 +87,11 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontFamily: 'mon-sb',
     fontSize: 16,
-    marginTop: 4,
+  },
+  divider: {
+    height: StyleSheet.hairlineWidth,
+    backgroundColor: Colors.grey,
+    marginVertical: 16,
   },
 });
 
