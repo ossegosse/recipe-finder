@@ -13,9 +13,14 @@ This is Recipe Finder, where you'll find a variety of meals with clear instructi
 
 ### Set up
 
-- Clone the repository
-- NPM install
-- Run it on your phone with Expo Go or with a simulator
+1. Clone the repository
+2. Navigate to the project directory
+
+- cd recipe-finder
+
+3. NPM install
+
+4. Run it on your phone with Expo Go or with a simulator
 
 ### Techstack
 
