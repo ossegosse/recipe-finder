@@ -7,7 +7,7 @@ This is Recipe Finder, where you'll find a variety of meals with clear instructi
 ### Features
 
 - Browse a variety of meals and recipes.
-- Choose between different categories such as Beef, Chicken, Vegetarian, Deserts etc,.
+- Choose between different categories such as Beef, Chicken, Vegetarian, Desserts etc,.
 - Click a meal you'd like to cook, make sure you have the ingredients and follow the instructions to make a delicious dish!
 - Click and save the recipes to have quick access to your favorite meals.
 
