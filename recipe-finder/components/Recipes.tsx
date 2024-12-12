@@ -4,6 +4,7 @@ import useGet from '@/hooks/useGet';
 import { Link } from 'expo-router';
 import { BASE_URLS } from '@/hooks/useGet';
 import Colors from '@/constants/Colors';
+import FavoriteButton from './FavoriteButton';
 
 type Meal = {
   strMeal: string;
@@ -66,6 +67,7 @@ const Recipes = ({ category }: Props) => {
             <Text style={styles.info}>{meal.strMeal}</Text>
           </TouchableOpacity>
           </Link>
+          <FavoriteButton meal={meal} />
           <View style={styles.divider} />
         </View>
       ))}

@@ -1,6 +1,6 @@
 import React from 'react';
-import FontAwesome from '@expo/vector-icons/FontAwesome';
-import { Link, Tabs } from 'expo-router';
+import { StatusBar } from 'react-native';
+import { Tabs } from 'expo-router';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { Ionicons } from '@expo/vector-icons';
 import Colors from '@/constants/Colors';
@@ -8,6 +8,12 @@ import Colors from '@/constants/Colors';
 export default function TabLayout() {
 
   return (
+    <>
+    <StatusBar 
+        barStyle="dark-content" 
+        backgroundColor="transparent" 
+        translucent={true}
+      />
     <Tabs
       screenOptions={{
         tabBarActiveTintColor: Colors.primary,
@@ -31,5 +37,6 @@ export default function TabLayout() {
         }}
       />
     </Tabs>
+    </>
   );
 }

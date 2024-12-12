@@ -3,6 +3,8 @@ import { Stack } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
 import { useEffect } from 'react';
 import 'react-native-reanimated';
+import { FavoritesProvider } from '@/context/FavoritesContext';
+
 
 
 export {
@@ -18,6 +20,7 @@ export const unstable_settings = {
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
 
+// Laddar mina fonter
 export default function RootLayout() {
   const [loaded, error] = useFonts({
     mon: require('../assets/fonts/Montserrat-Regular.ttf'),
@@ -47,9 +50,11 @@ function RootLayoutNav() {
  
 
   return (
+    <FavoritesProvider>
       <Stack>
         <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
         <Stack.Screen name="details/[id]" options={{ headerTitle: 'Instructions', headerTintColor: '#000', headerBackTitle: 'Back', }} />
       </Stack>
+      </FavoritesProvider>
   );
 }

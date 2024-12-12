@@ -4,6 +4,8 @@ type Ingredient = {
     measure: string;
   }; 
 
+
+  // extraherar ingredienser ur objekt som lagras i tom array, och sedan kollar så att både ingredienser och måttenhet finns med, och inte är tomma strängar
 export const mapIngredients = (meal: any): Ingredient[] => {
     const ingredients: Ingredient[] = [];
     
