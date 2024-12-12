@@ -3,6 +3,8 @@ import { View, Text, ScrollView, StyleSheet, Image } from 'react-native';
 import { useFavorites } from '@/context/FavoritesContext';
 import { Link } from 'expo-router';
 
+
+// screen för favoritmarkerade recept. Länkar vidare till respektive recepts detaljsida
 const FavoritesScreen = () => {
   const { favorites } = useFavorites();
 
@@ -17,15 +19,14 @@ const FavoritesScreen = () => {
   return (
     <ScrollView style={styles.container}>
       {favorites.map((meal) => (
-        <View key={meal.idMeal} style={styles.recipeCard}>
-          <Image source={{ uri: meal.strMealThumb }} style={styles.image} />
-          <View style={styles.info}>
-            <Text style={styles.title}>{meal.strMeal}</Text>
-            <Link href={`/details/${meal.idMeal}`}>
-              <Text style={styles.linkText}>View Details</Text>
-            </Link>
+        <Link href={`/details/${meal.idMeal}`} key={meal.idMeal}>
+          <View style={styles.recipeCard}>
+            <Image source={{ uri: meal.strMealThumb }} style={styles.image} />
+            <View style={styles.info}>
+              <Text style={styles.title}>{meal.strMeal}</Text>
+            </View>
           </View>
-        </View>
+        </Link>
       ))}
     </ScrollView>
   );
@@ -41,10 +42,6 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-  },
-  emptyText: {
-    fontSize: 18,
-    color: '#999',
   },
   recipeCard: {
     flexDirection: 'row',
@@ -67,11 +64,6 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontFamily: 'mon-sb',
     marginBottom: 4,
-  },
-  linkText: {
-    fontSize: 14,
-    color: 'blue',
-    textDecorationLine: 'underline',
   },
 });
 
