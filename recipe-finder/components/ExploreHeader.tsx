@@ -6,11 +6,12 @@ import {
   ScrollView,
   TouchableOpacity,
 } from "react-native";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import Colors from "@/constants/Colors";
 import * as Haptics from "expo-haptics";
 
+// Kategorier till headern med respektive ikon
 const categories = [
   { name: "Beef", icon: "cow" },
   { name: "Chicken", icon: "food-drumstick" },
@@ -31,6 +32,7 @@ interface Props {
   onCategoryChanged: (category: string) => void;
 }
 
+// Header med kategorier
 const ExploreHeader = ({ onCategoryChanged}: Props) => {
   const scrollRef = useRef<ScrollView>(null);
   const itemsRef = useRef<(React.ElementRef<typeof TouchableOpacity> | null)[]>(
@@ -38,11 +40,11 @@ const ExploreHeader = ({ onCategoryChanged}: Props) => {
   );
   const [activeIndex, setActiveIndex] = useState(0);
 
+  // Uppdaterar den aktiva kategorins index, scrollar till kategorin man klickat på, använder haptics för bättre användarupplevelse
   const selectCategory = (index: number) => {
     const selected = itemsRef.current[index];
     setActiveIndex(index);
 
-    // scrollar till kategorin man klickat på med en lätt haptic-input
     selected?.measure((x) => {
       scrollRef.current?.scrollTo({ x: x - 16, y: 0, animated: true });
     });

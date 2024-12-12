@@ -5,7 +5,9 @@ import { useEffect } from 'react';
 import 'react-native-reanimated';
 import { FavoritesProvider } from '@/context/FavoritesContext';
 
-
+// Root Layout. Här Hämtar jag och laddar fonter, omslutet av min FavoritesProvider som gör att funktionaliteten att favoritmarkera recept 
+// (lagra dom lokalt) är tillgängligt hos barnkomponenter
+// Även Navigeringsstruktur med Stack från expo-router och global felhantering
 
 export {
   // Catch any errors thrown by the Layout component.
@@ -13,7 +15,6 @@ export {
 } from 'expo-router';
 
 export const unstable_settings = {
-  // Ensure that reloading on `/modal` keeps a back button present.
   initialRouteName: '(tabs)',
 };
 
@@ -48,7 +49,7 @@ export default function RootLayout() {
 
 function RootLayoutNav() {
  
-
+  // Använt mig av tabs-struktur, flikar för att navigera i appen och en detaljsida för att visa upp information om recepten.
   return (
     <FavoritesProvider>
       <Stack>

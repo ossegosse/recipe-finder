@@ -25,6 +25,7 @@ type Meal = {
   ingredients: Ingredient[];
 };
 
+// Detailspage. Hämtar och renderar ut vald rätts ID, med uselocalsearchparams. 
 const DetailsPage = () => {
   const { id } = useLocalSearchParams<{ id: string }>();
   const { data, loading, error } = useGet<{ meals: Meal[] }>(
@@ -75,6 +76,7 @@ const DetailsPage = () => {
         <View style={styles.divider} />
       </View>
       
+      {/* Delar upp instruktionerna med split och filter för att göra det mer läsbart */}
       <View style={styles.instructionsContainer}>
         <Text style={styles.instructionsTitle}>Instructions:</Text>
         {recipe.strInstructions

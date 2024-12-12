@@ -1,10 +1,13 @@
 import { useState, useEffect } from 'react';
 
+// Endpoints
 export const BASE_URLS = {
   CATEGORY: "https://www.themealdb.com/api/json/v1/1/filter.php?c=",
   DETAIL: "https://www.themealdb.com/api/json/v1/1/",
 };
 
+
+// Fetch som tar baseurl och endpoint som parametrar, 
 function useGet<T>(endpoint: string, baseUrl: string) {
   const [data, setData] = useState<null | T>(null);
   const [loading, setLoading] = useState(true);

@@ -20,14 +20,15 @@ interface Props {
   category: string;
 }
 
-
-
+// Recipe-komponent. Använder kategori som prop som skickas för att meddela vilken kategori som är vald och som ska renderas. 
+// Hämtar och renderar data
 const Recipes = ({ category }: Props) => {
   const { data, loading, error } = useGet<MealsResponse>(
     category, 
     BASE_URLS.CATEGORY
   );
 
+  // Renderar tillståndsbaserat innehåll baserat på om det laddar, får error, inte hittar data eller hittar data.
   if (loading) {
     return (
       <View>
@@ -54,20 +55,22 @@ const Recipes = ({ category }: Props) => {
   }
 
   return (
-    <ScrollView >
+    <ScrollView>
       {data.meals.map((meal) => (
         <View style={styles.listing} key={meal.idMeal}>
           <Link href={`/details/${meal.idMeal}`} asChild>
-          <TouchableOpacity >  
-            <Image
-              style={styles.image}
-              source={{ uri: meal.strMealThumb }}
-              resizeMode="cover"
-            />
-            <Text style={styles.info}>{meal.strMeal}</Text>
-          </TouchableOpacity>
+            <TouchableOpacity>
+              <Image
+                style={styles.image}
+                source={{ uri: meal.strMealThumb }}
+                resizeMode="cover"
+              />
+              <View style={styles.infoContainer}>
+                <Text style={styles.info}>{meal.strMeal}</Text>
+                <FavoriteButton meal={meal} /> 
+              </View>
+            </TouchableOpacity>
           </Link>
-          <FavoriteButton meal={meal} />
           <View style={styles.divider} />
         </View>
       ))}
@@ -84,6 +87,12 @@ const styles = StyleSheet.create({
     width: '100%',
     height: 250,
     borderRadius: 10,
+  },
+  infoContainer: {
+    flexDirection: 'row', 
+    justifyContent: 'space-between', 
+    alignItems: 'center', 
+    marginTop: 8,
   },
   info: {
     textAlign: 'center',

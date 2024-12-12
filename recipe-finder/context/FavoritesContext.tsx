@@ -6,6 +6,8 @@ type Favorite = {
   strMealThumb: string;
 };
 
+// Globalt state för att hantera favorit-funktion för recepten.
+// Lagras lokalt, i tom array
 type FavoritesContextType = {
   favorites: Favorite[];
   toggleFavorite: (meal: Favorite) => void;
@@ -17,6 +19,9 @@ const FavoritesContext = createContext<FavoritesContextType | undefined>(undefin
 export const FavoritesProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [favorites, setFavorites] = useState<Favorite[]>([]);
 
+  // Toggle-funktion för att lägga till eller ta bort måltider från favoriter
+  // Kollar om samma måltids-id redan finns och tar bort från array vid toggle
+  // Om måltiden inte finns lägger den till i en ny array
   const toggleFavorite = (meal: Favorite) => {
     const exists = favorites.some(fav => fav.idMeal === meal.idMeal);
     if (exists) {
@@ -26,6 +31,7 @@ export const FavoritesProvider: React.FC<{ children: React.ReactNode }> = ({ chi
     }
   };
 
+  // Kollar om en måltid är favorit
   const isFavorite = (id: string) => favorites.some(fav => fav.idMeal === id);
 
   return (
